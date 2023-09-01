@@ -84,8 +84,8 @@ function mainMenu(person, people) {
             break;
         case "family":
             //! TODO
-            // let personFamily = findPersonFamily(person, people);
-            // displayPeople('Family', personFamily);
+            let personFamily = findPersonFamily(person, people);
+            displayPeople('Family', personFamily);
             break;
         case "descendants":
             //! TODO
@@ -100,6 +100,14 @@ function mainMenu(person, people) {
 
     return mainMenu(person, people);
 }
+// I don;t know why but it doesn't work
+function findPersonFamily(person, people) {
+    const personFamily = [];
+    const personSpouseId = person.currentSpouse;
+    let spouse = people.filter(ps => ps.id === personSpouseId);
+    personFamily.push(spouse);
+    return personFamily;
+}
 
 function displayPersonInfo(person) {
     alert(
@@ -113,8 +121,6 @@ function displayPersonInfo(person) {
         Weight: ${person.weight}\n
         Eyes: ${person.eyeColor}\n
         Occupation: ${person.occupation}`
-        // Parents: ${person.parents}\n
-        // Spouse: ${person.currentSpouse}`
     );
 }
 
