@@ -65,11 +65,53 @@ function searchByName(people) {
 }
 
 function searchByTraits(people) {
-    const heightToSearchForString = prompt("Please enter the height of the person you are searching for.");
-    const heightToSearchForInt = parseInt(heightToSearchForString);
-    const heightFilterResults = people.filter(person => person.height === heightToSearchForInt);
-    return heightFilterResults;
+
+    const searchByTraitsChoise = validatedPrompt(
+        'Please enter in what type of trait you would like to search.',
+        ['gender', 'height', 'weight', 'eyeColor']
+    );
+
+    let results = [];
+    switch (searchByTraitsChoise) {
+        case 'gender':
+            const genderSearchValue = validatedPrompt(
+                'Please  choose the gender type.',
+                ['male', 'female']
+            );
+
+            results = people.filter(function (person) {
+                if (person.gender === genderSearchValue) {
+                    return true;
+                } else {
+                    return false;
+                }
+            })
+            break;
+
+    }
+
+    return results;
+
+    // switch (searchTypeChoice) {
+    //     case 'id':
+    //         results = searchById(people);
+    //         break;
+    //     case 'name':
+    //         results = searchByName(people);
+    //         break;
+    //     case 'traits':
+    //         //! TODO
+    //         results = searchByTraits(people);
+    //         break;
+    //     default:
+    //         return searchPeopleDataSet(people);
+    // }
+
+    // return results;
 }
+
+
+
 function mainMenu(person, people) {
 
     const mainMenuUserActionChoice = validatedPrompt(
