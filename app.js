@@ -75,7 +75,7 @@ function searchByTraits(people) {
     switch (searchByTraitsChoise) {
         case 'gender':
             const genderSearchValue = validatedPrompt(
-                'Please  choose the gender type.',
+                'Please  choose the gender type:',
                 ['male', 'female']
             );
 
@@ -87,30 +87,40 @@ function searchByTraits(people) {
                 }
             })
             break;
-
+        case 'eyecolor':
+            const eyeColorSearchValue = prompt('Please enter the eye color');
+            results = people.filter(function (person) {
+                if (person.eyeColor === eyeColorSearchValue) {
+                    return true;
+                } else {
+                    return false;
+                }
+            })
+            break;
+        case 'height':
+            // is there way to parse it here  into INT instead of in if statment below?
+            const heightSearchValue = prompt("Please enter the height");
+            results = people.filter(function (person) {
+                if (person.height === parseInt(heightSearchValue)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            })
+            break;
+        case 'weight':
+            const weightSearchvalue = prompt("Please entter the weight");
+            results = people.filter(function (person) {
+                if (person.weight === parseInt(weightSearchvalue)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            })
+            break;
     }
-
     return results;
-
-    // switch (searchTypeChoice) {
-    //     case 'id':
-    //         results = searchById(people);
-    //         break;
-    //     case 'name':
-    //         results = searchByName(people);
-    //         break;
-    //     case 'traits':
-    //         //! TODO
-    //         results = searchByTraits(people);
-    //         break;
-    //     default:
-    //         return searchPeopleDataSet(people);
-    // }
-
-    // return results;
 }
-
-
 
 function mainMenu(person, people) {
 
