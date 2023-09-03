@@ -131,11 +131,11 @@ function mainMenu(person, people) {
 
     switch (mainMenuUserActionChoice) {
         case "info":
-            //! TODO
+            //! TODO DONE
             displayPersonInfo(person);
             break;
         case "family":
-            //! TODO
+            //! TODO doing
             let personFamily = findPersonFamily(person, people);
             displayPeople('Family', personFamily);
             break;
@@ -152,14 +152,6 @@ function mainMenu(person, people) {
 
     return mainMenu(person, people);
 }
-// I don;t know why but it doesn't work
-function findPersonFamily(person, people) {
-    const personFamily = [];
-    const personSpouseId = person.currentSpouse;
-    let spouse = people.filter(ps => ps.id === personSpouseId);
-    personFamily.push(spouse);
-    return personFamily;
-}
 
 function displayPersonInfo(person) {
     alert(
@@ -174,6 +166,24 @@ function displayPersonInfo(person) {
         Eyes: ${person.eyeColor}\n
         Occupation: ${person.occupation}`
     );
+}
+
+// I don;t know why but it doesn't work
+function findPersonFamily(person, people) {
+    // Here has to be array of Id from parents and currentSpouse
+    const familyIds = [];
+    familyIds.push(person.currentSpouse);
+
+    for (i = 0; i < person.parents.length; i++) {
+        familyIds.push(person.parents[i]);
+    }
+
+    //const idFilterResults = people.filter(person => person.id === idToSearchForInt);
+    const familyObjects = [];
+    for (i = 0; i < familyIds.length; i++) {
+        familyObjects.push(people.filter(el => el.id === familyIds[i]))
+    }
+
 }
 
 function displayPeople(displayTitle, peopleToDisplay) {
