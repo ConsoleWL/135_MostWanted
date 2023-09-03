@@ -178,12 +178,19 @@ function findPersonFamily(person, people) {
         familyIds.push(person.parents[i]);
     }
 
-    //const idFilterResults = people.filter(person => person.id === idToSearchForInt);
-    const familyObjects = [];
-    for (i = 0; i < familyIds.length; i++) {
-        familyObjects.push(people.filter(el => el.id === familyIds[i]))
-    }
+    // in family Ids i have people who is related to that person...
+    // The problem is that i don't know how to push those id into displayPeople()
+    // below two methods dont' work;
 
+    // const familyObjects = [];
+    // for (i = 0; i < familyIds.length; i++) {
+    //     familyObjects.concat(people.filter(el => el.id === familyIds[i]))
+    // }
+    // const familyObjects = [];
+    // for (i = 0; i < familyIds.length; i++) {
+    //     familyObjects.push(people.filter(el => el.id === familyIds[i]))
+    // }
+    return familyObjects;
 }
 
 function displayPeople(displayTitle, peopleToDisplay) {
